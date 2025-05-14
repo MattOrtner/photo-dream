@@ -5,6 +5,7 @@
   font-family: Arial, sans-serif;
   color: #333;
 }
+
 body {
   background-color: #f4f4f4;
   display: flex;
@@ -12,7 +13,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-color: bisque;
 }
 
 #photosContainer {
@@ -23,31 +23,64 @@ body {
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0.25rem;
 }
-.image {
+.photo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s ease;
+}
+.photo-container:hover {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+.photo-container:hover .photo {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
+.photo {
   width: 200px;
   margin: 0.5rem;
 }
-.image-description {
-  font-size: 14px;
+.photo:hover {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
+.photo-description {
+  font-size: 0rem;
   text-align: center;
   margin: 0.5rem 0;
   color: #555;
   font-style: italic;
+  opacity: 0;
+  transition: all 0.75s ease;
 }
-.image-credit {
+
+.photo:hover ~ .photo-description {
+  display: block;
+  opacity: 1;
+  font-size: 0.75rem;
+  transition-delay: 0.4s;
+}
+
+.photo-credit {
   margin: 0.5rem 0;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: bold;
   background-color: #f0f0f0;
   padding: 0.5rem;
   border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
   font-size: 12px;
   text-align: center;
   color: #333;
-  text-decoration: none;
-  display: block;
 }

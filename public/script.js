@@ -1,7 +1,6 @@
 document.getElementById("getData").addEventListener("click", () => {
   fetch("http://localhost:5000/api/data")
     .then((res) => {
-      console.log("document response");
       return res.json();
     })
     .then((data) => {
@@ -10,20 +9,19 @@ document.getElementById("getData").addEventListener("click", () => {
         return;
       }
       const photosContainer = document.getElementById("photosContainer");
-      const fragment = document.createDocumentFragment();
-      data.results.forEach((photo) => {
+      data.results.forEach((photo, i) => {
         const photoContainer = document.createElement("div");
-
+        photoContainer.className = "photo-container";
         const img = document.createElement("img");
         img.src = photo.urls?.small || "";
         img.alt = photo.alt_description || "Photo";
-        img.className = "image";
+        img.className = "photo";
         photoContainer.appendChild(img);
 
         const description = document.createElement("p");
         description.innerHTML =
           photo.alt_description || "No description available";
-        description.className = "image-description";
+        description.className = "photo-description";
         photoContainer.appendChild(description);
 
         const credit = document.createElement("a");
@@ -33,13 +31,11 @@ document.getElementById("getData").addEventListener("click", () => {
             : "#";
         credit.innerHTML = `Photo by <strong>${photo.user.name}</strong> on <strong>Unsplash</strong>`;
         credit.target = "_blank";
-        credit.className = "image-credit";
+        credit.className = "photo-credit";
         photoContainer.appendChild(credit);
 
-        fragment.appendChild(photoContainer);
+        photosContainer.appendChild(photoContainer);
       });
-      photosContainer.appendChild(fragment);
     })
     .catch((err) => console.error("Error:", err));
 });
-// credit.innerHTML = `Photo by <a href="${photo.user.links.html}?utm_source=portfolio_app&utm_medium=referral">${photo.user.name}</a> on <a href="https://unsplash.com/?utm_source=portfolio_app&utm_medium=referral">Unsplash</a>`;

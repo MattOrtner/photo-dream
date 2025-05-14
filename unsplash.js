@@ -1,7 +1,7 @@
 const { createApi } = require("unsplash-js");
 
 const unsplash = createApi({
-  // missing accessKey
+  accessKey: "ys1LNHmDsPi7fETc--5C0n0IWB8FhFFNlB9-q__brnU",
 });
 
 const fetchPhotos = async (query) => {
