@@ -15,6 +15,41 @@ body {
   height: 100%;
 }
 
+#searchInput {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.seach-input:focus {
+  outline: none;
+  border-color: #6fb1f8;
+}
+
+#searchContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+#searchButton {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #555;
+}
+
 #photosContainer {
   display: flex;
   align-items: center;
