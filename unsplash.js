@@ -6,6 +6,7 @@ const unsplash = createApi({
 });
 
 const fetchPhotos = async (query) => {
+  console.log("fetchPhotos query", query);
   console.log("fetchPhotos...");
   try {
     const response = await unsplash.search.getPhotos({

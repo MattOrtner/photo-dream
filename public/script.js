@@ -1,5 +1,9 @@
-document.getElementById("getData").addEventListener("click", () => {
-  fetch("http://localhost:5000/api/data")
+const searchInput = document.getElementById("searchInput");
+document.getElementById("searchButton").addEventListener("click", () => {
+  fetch(
+    "http://localhost:5000/api/data?query=" +
+      encodeURIComponent(searchInput.value)
+  )
     .then((res) => {
       return res.json();
     })
