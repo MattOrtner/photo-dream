@@ -1,7 +1,8 @@
 const { createApi } = require("unsplash-js");
+require("dotenv").config();
 
 const unsplash = createApi({
-  // missing accessKey
+  accessKey: process.env.UNSPLASH_ACCESS_KEY,
 });
 
 const fetchPhotos = async (query) => {
