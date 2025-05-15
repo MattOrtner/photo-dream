@@ -9,8 +9,13 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/api/data", async (req, res) => {
   console.log("Server received request");
+  const searchQuery = req.query.query || "corgis";
   try {
-    const response = await fetchPhotos("nature");
+    const response = await fetchPhotos(searchQuery);
+    if (!response || response.length === 0) {
+      console.error("No photos found for the query:", searchQuery);
+      return res.status(404).json({ error: "No photos found" });
+    }
     console.log("Returning response");
     res.json(response);
   } catch (err) {
