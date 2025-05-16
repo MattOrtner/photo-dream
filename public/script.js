@@ -16,17 +16,25 @@ document.getElementById("searchButton").addEventListener("click", () => {
       data.results.forEach((photo, i) => {
         const photoContainer = document.createElement("div");
         photoContainer.className = "photo-container";
+
+        const photoOverlayContainer = document.createElement("div");
+        photoOverlayContainer.className = "photo-overlay-container";
+
+        const photoOverlay = document.createElement("div");
+        photoOverlay.className = "photo-overlay";
+
         const img = document.createElement("img");
         img.src = photo.urls?.small || "";
         img.alt = photo.alt_description || "Photo";
         img.className = "photo";
-        photoContainer.appendChild(img);
+        photoOverlayContainer.appendChild(img);
 
-        const description = document.createElement("p");
+        const description = document.createElement("div");
         description.innerHTML =
           photo.alt_description || "No description available";
         description.className = "photo-description";
-        photoContainer.appendChild(description);
+        photoOverlayContainer.appendChild(description);
+        photoContainer.appendChild(photoOverlayContainer);
 
         const credit = document.createElement("a");
         credit.href =
