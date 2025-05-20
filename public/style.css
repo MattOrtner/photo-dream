@@ -15,6 +15,13 @@ body {
   height: 100%;
 }
 
+.title {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  padding: 2rem 0 0;
+}
+
 #searchInput {
   width: 100%;
   max-width: 300px;
@@ -110,12 +117,11 @@ body {
   font-size: 1rem;
   padding: 0.5rem;
   border-radius: 10px;
-  transition: opacity 0.5s ease-in-out;
   font-family: Arial, Helvetica, sans-serif;
 }
 .photo-description:hover {
+  transition-delay: 2s;
   opacity: 1;
-  transition-delay: 1s;
   font-size: 0.75rem;
   transition: all 1s ease-in-out;
 }
