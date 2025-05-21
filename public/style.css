@@ -57,6 +57,28 @@ body {
   background-color: #555;
 }
 
+#previousSearchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  width: 80%;
+  flex-wrap: wrap;
+}
+
+.previous-search {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: solid 2px #555;
+  background-color: white;
+}
+
 #photosContainer {
   display: flex;
   align-items: center;

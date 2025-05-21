@@ -1,4 +1,7 @@
 const searchInput = document.getElementById("searchInput");
+const previousSearchContainer = document.getElementById(
+  "previousSearchContainer"
+);
 document.getElementById("searchButton").addEventListener("click", () => {
   fetch(
     "http://localhost:5000/api/data?query=" +
@@ -12,6 +15,11 @@ document.getElementById("searchButton").addEventListener("click", () => {
         console.error("Invalid data format:", data);
         return;
       }
+      const previousSearch = document.createElement("button");
+      previousSearch.className = "previous-search";
+      previousSearch.innerHTML = searchInput.value || "corgis";
+      previousSearchContainer.appendChild(previousSearch);
+
       const photosContainer = document.getElementById("photosContainer");
       data.results.forEach((photo, i) => {
         const photoContainer = document.createElement("div");
