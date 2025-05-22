@@ -26,8 +26,8 @@ document.getElementById("searchButton").addEventListener("click", () => {
       return res.json();
     })
     .then((data) => {
-      if (data.length === 0 || !data.results) {
-        console.error("Invalid data format:", data);
+      if (data.total === 0 || !data.results) {
+        console.log("No results found");
         return;
       }
 
