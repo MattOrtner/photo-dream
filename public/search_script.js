@@ -4,7 +4,20 @@ const previousSearchContainer = document.getElementById(
 );
 const previousSearches = document.getElementsByClassName("previous-search");
 
+const isDuplicate = (search) => {
+  if (previousSearches.length > 0) {
+    for (let prevSearch of previousSearches) {
+      if (prevSearch.innerHTML === searchInput.value) {
+        return true;
+      }
+    }
+  }
+};
 document.getElementById("searchButton").addEventListener("click", () => {
+  if (isDuplicate(searchInput.value)) {
+    console.log("Duplicate search");
+    return;
+  }
   fetch(
     "http://localhost:5000/api/data?query=" +
       encodeURIComponent(searchInput.value)
@@ -18,14 +31,6 @@ document.getElementById("searchButton").addEventListener("click", () => {
         return;
       }
 
-      if (previousSearches.length > 0) {
-        for (let prevSearch of previousSearches) {
-          if (prevSearch.innerHTML === searchInput.value) {
-            console.log("previousSearches", previousSearches);
-            return;
-          }
-        }
-      }
       const previousSearch = document.createElement("button");
       previousSearch.className = "previous-search";
       // add href to previousSearch to scroll to the group = of photos that have that same search
