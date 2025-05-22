@@ -2,6 +2,8 @@ const searchInput = document.getElementById("searchInput");
 const previousSearchContainer = document.getElementById(
   "previousSearchContainer"
 );
+const previousSearches = document.getElementsByClassName("previous-search");
+
 document.getElementById("searchButton").addEventListener("click", () => {
   fetch(
     "http://localhost:5000/api/data?query=" +
@@ -15,8 +17,18 @@ document.getElementById("searchButton").addEventListener("click", () => {
         console.error("Invalid data format:", data);
         return;
       }
+
+      if (previousSearches.length > 0) {
+        for (let prevSearch of previousSearches) {
+          if (prevSearch.innerHTML === searchInput.value) {
+            console.log("previousSearches", previousSearches);
+            return;
+          }
+        }
+      }
       const previousSearch = document.createElement("button");
       previousSearch.className = "previous-search";
+      // add href to previousSearch to scroll to the group = of photos that have that same search
       previousSearch.innerHTML = searchInput.value || "corgis";
       previousSearchContainer.appendChild(previousSearch);
 
