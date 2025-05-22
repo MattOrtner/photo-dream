@@ -59,3 +59,14 @@ document.getElementById("searchButton").addEventListener("click", () => {
     })
     .catch((err) => console.error("Error:", err));
 });
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "/") {
+    event.preventDefault();
+    searchInput.focus();
+  }
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("searchButton").click();
+  }
+});
