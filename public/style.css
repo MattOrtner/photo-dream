@@ -61,6 +61,7 @@ body {
 }
 
 #previousSearchContainer {
+  background-color: #f4f4f4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,6 +73,11 @@ body {
   flex-wrap: wrap;
 }
 
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
 .previous-search {
   padding: 0.5rem 1rem;
   border: none;
