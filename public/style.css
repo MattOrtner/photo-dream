@@ -20,6 +20,7 @@ body {
   color: #333;
   text-align: center;
   padding: 2rem 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #searchInput {
