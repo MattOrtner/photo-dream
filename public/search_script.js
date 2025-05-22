@@ -31,13 +31,19 @@ document.getElementById("searchButton").addEventListener("click", () => {
         return;
       }
 
-      const previousSearch = document.createElement("button");
+      const previousSearch = document.createElement("a");
       previousSearch.className = "previous-search";
-      // add href to previousSearch to scroll to the group = of photos that have that same search
       previousSearch.innerHTML = searchInput.value || "corgis";
-      previousSearchContainer.appendChild(previousSearch);
+      previousSearch.href = `#${searchInput.value}`;
+      previousSearchContainer.prepend(previousSearch);
 
-      const photosContainer = document.getElementById("photosContainer");
+      const photoGroupsContainer = document.getElementById(
+        "photoGroupsContainer"
+      );
+      const photoGroup = document.createElement("div");
+      photoGroup.className = "photo-group";
+      photoGroup.id = `${searchInput.value}`;
+
       data.results.forEach((photo, i) => {
         const photoContainer = document.createElement("div");
         photoContainer.className = "photo-container";
@@ -71,8 +77,16 @@ document.getElementById("searchButton").addEventListener("click", () => {
         credit.className = "photo-credit";
         photoContainer.appendChild(credit);
 
-        photosContainer.appendChild(photoContainer);
+        photoGroup.append(photoContainer);
       });
+
+      photoGroupsContainer.prepend(photoGroup);
+
+      const photoGroupHeader = document.createElement("h2");
+      photoGroupHeader.className = "photo-group-header";
+      photoGroupHeader.innerHTML = searchInput.value || "corgis";
+      photoGroup.prepend(photoGroupHeader);
+      searchInput.value = "";
     })
     .catch((err) => console.error("Error:", err));
 });
