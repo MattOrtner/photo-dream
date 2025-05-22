@@ -2,7 +2,22 @@ const searchInput = document.getElementById("searchInput");
 const previousSearchContainer = document.getElementById(
   "previousSearchContainer"
 );
+const previousSearches = document.getElementsByClassName("previous-search");
+
+const isDuplicate = (search) => {
+  if (previousSearches.length > 0) {
+    for (let prevSearch of previousSearches) {
+      if (prevSearch.innerHTML === searchInput.value) {
+        return true;
+      }
+    }
+  }
+};
 document.getElementById("searchButton").addEventListener("click", () => {
+  if (isDuplicate(searchInput.value)) {
+    console.log("Duplicate search");
+    return;
+  }
   fetch(
     "http://localhost:5000/api/data?query=" +
       encodeURIComponent(searchInput.value)
@@ -15,12 +30,20 @@ document.getElementById("searchButton").addEventListener("click", () => {
         console.error("Invalid data format:", data);
         return;
       }
-      const previousSearch = document.createElement("button");
+
+      const previousSearch = document.createElement("a");
       previousSearch.className = "previous-search";
       previousSearch.innerHTML = searchInput.value || "corgis";
-      previousSearchContainer.appendChild(previousSearch);
+      previousSearch.href = `#${searchInput.value}`;
+      previousSearchContainer.prepend(previousSearch);
 
-      const photosContainer = document.getElementById("photosContainer");
+      const photoGroupsContainer = document.getElementById(
+        "photoGroupsContainer"
+      );
+      const photoGroup = document.createElement("div");
+      photoGroup.className = "photo-group";
+      photoGroup.id = `${searchInput.value}`;
+
       data.results.forEach((photo, i) => {
         const photoContainer = document.createElement("div");
         photoContainer.className = "photo-container";
@@ -54,8 +77,27 @@ document.getElementById("searchButton").addEventListener("click", () => {
         credit.className = "photo-credit";
         photoContainer.appendChild(credit);
 
-        photosContainer.appendChild(photoContainer);
+        photoGroup.append(photoContainer);
       });
+
+      photoGroupsContainer.prepend(photoGroup);
+
+      const photoGroupHeader = document.createElement("h2");
+      photoGroupHeader.className = "photo-group-header";
+      photoGroupHeader.innerHTML = searchInput.value || "corgis";
+      photoGroup.prepend(photoGroupHeader);
+      searchInput.value = "";
     })
     .catch((err) => console.error("Error:", err));
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "/") {
+    event.preventDefault();
+    searchInput.focus();
+  }
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("searchButton").click();
+  }
 });

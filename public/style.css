@@ -5,6 +5,10 @@
   font-family: Arial, sans-serif;
   color: #333;
 }
+body,
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background-color: #f4f4f4;
@@ -20,6 +24,7 @@ body {
   color: #333;
   text-align: center;
   padding: 2rem 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #searchInput {
@@ -42,7 +47,6 @@ body {
   justify-content: center;
   align-items: center;
   gap: 0.25rem;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 1.25rem;
   border-top: solid 1.75px #555;
@@ -60,6 +64,7 @@ body {
 }
 
 #previousSearchContainer {
+  background-color: #f4f4f4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,6 +76,11 @@ body {
   flex-wrap: wrap;
 }
 
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
 .previous-search {
   padding: 0.5rem 1rem;
   border: none;
@@ -79,17 +89,46 @@ body {
   cursor: pointer;
   border: solid 2px #555;
   background-color: white;
+  text-decoration: none;
 }
 
-#photosContainer {
+#photoGroupsContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   flex-wrap: wrap;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
   padding: 0.25rem;
+}
+.photo-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0.5rem;
+  padding: 1rem 0.5rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.photo-group-header {
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+  padding: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  top: -1rem;
+  left: -1rem;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 10px;
+  z-index: 1;
+  font-weight: bold;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 .photo-container {
   display: flex;
@@ -110,7 +149,7 @@ body {
 }
 
 .photo {
-  width: 200px;
+  height: 300px;
   margin: 0.5rem;
 }
 
