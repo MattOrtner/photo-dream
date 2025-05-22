@@ -20,7 +20,7 @@ body {
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 5vh;
   color: #333;
   text-align: center;
   padding: 2rem 0;
@@ -73,7 +73,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
-  width: 80%;
+  width: 100%;
   flex-wrap: wrap;
 }
 
@@ -91,6 +91,10 @@ body {
   border: solid 2px #555;
   background-color: white;
   text-decoration: none;
+}
+
+.previous-search:hover {
+  background-color: #afafaf;
 }
 
 #photoGroupsContainer {
@@ -127,7 +131,6 @@ body {
   margin: 0 auto;
   background-color: #fff;
   border-radius: 10px;
-  z-index: 1;
   font-weight: bold;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -166,7 +169,6 @@ body {
 
 .photo-description {
   position: absolute;
-  z-index: 1;
   top: 0;
   bottom: 0;
   left: 0;
