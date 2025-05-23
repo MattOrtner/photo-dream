@@ -1,4 +1,4 @@
-const EXPRESS_API_URL = window.APP_CONFIG?.EXPRESS_API_URL || "/api";
+const EXPRESS_API_URL = window.APP_CONFIG?.EXPRESS_API_URL;
 
 const searchInput = document.getElementById("searchInput");
 const previousSearchContainer = document.getElementById(
