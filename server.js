@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const { fetchPhotos } = require("./unsplash");
 require("dotenv").config();
+const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -9,12 +10,17 @@ const PORT = process.env.PORT || 5000;
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/config.js", (req, res) => {
-  const apiUrl = process.env.EXPRESS_API_URL || `http://${req.headers.host}`;
+  const apiUrl = `http://${req.headers.host}`;
   res.set("Content-Type", "application/javascript");
   res.send(`window.APP_CONFIG = { EXPRESS_API_URL: "${apiUrl}" };`);
 });
 
-app.get("/api/data", async (req, res) => {
+const corsOptions = {
+  origin: "https://photo-dream.vercel.app",
+  methods: "GET",
+};
+
+app.get("/api/data", cors(corsOptions), async (req, res) => {
   console.log("Server received request");
   const searchQuery = req.query.query || "corgis";
   try {
