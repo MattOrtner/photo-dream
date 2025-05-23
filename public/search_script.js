@@ -1,3 +1,5 @@
+const EXPRESS_API_URL = window.APP_CONFIG?.EXPRESS_API_URL || "/api";
+
 const searchInput = document.getElementById("searchInput");
 const previousSearchContainer = document.getElementById(
   "previousSearchContainer"
@@ -19,8 +21,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
     return;
   }
   fetch(
-    "http://localhost:5000/api/data?query=" +
-      encodeURIComponent(searchInput.value)
+    `${EXPRESS_API_URL}api/data?query=` + encodeURIComponent(searchInput.value)
   )
     .then((res) => {
       return res.json();

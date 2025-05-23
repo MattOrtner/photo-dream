@@ -1,11 +1,18 @@
 const express = require("express");
 const path = require("path");
 const { fetchPhotos } = require("./unsplash");
+require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/config.js", (req, res) => {
+  const apiUrl = process.env.EXPRESS_API_URL;
+  res.set("Content-Type", "application/javascript");
+  res.send(`window.APP_CONFIG = { EXPRESS_API_URL: "${apiUrl}" };`);
+});
 
 app.get("/api/data", async (req, res) => {
   console.log("Server received request");
