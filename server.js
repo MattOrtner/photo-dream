@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/config.js", (req, res) => {
-  const apiUrl = process.env.EXPRESS_API_URL;
+  const apiUrl = process.env.EXPRESS_API_URL || `http://${req.headers.host}`;
   res.set("Content-Type", "application/javascript");
   res.send(`window.APP_CONFIG = { EXPRESS_API_URL: "${apiUrl}" };`);
 });
