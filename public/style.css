@@ -158,6 +158,7 @@ body {
 }
 
 .photo:hover .photo-description {
+  transition-delay: 2s;
   transform: opacity(1);
   transition: transform 0.5s ease-in;
 }
@@ -180,15 +181,14 @@ body {
   align-items: end;
   text-align: center;
   color: black;
-  font-size: 1rem;
+  font-size: 0.75rem;
   padding: 0.5rem;
   border-radius: 10px;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 .photo-description:hover {
-  transition-delay: 2s;
   opacity: 1;
-  font-size: 0.75rem;
   transition: all 1s ease-in-out;
 }
 
