@@ -2,7 +2,7 @@ const EXPRESS_API_URL = window.APP_CONFIG?.EXPRESS_API_URL;
 if (!EXPRESS_API_URL) {
   console.error("EXPRESS_API_URL is not defined");
 }
-
+console.log("EXPRESS_API_URL: ", EXPRESS_API_URL);
 const searchInput = document.getElementById("searchInput");
 const previousSearchContainer = document.getElementById(
   "previousSearchContainer"

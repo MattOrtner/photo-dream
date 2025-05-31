@@ -10,13 +10,17 @@ const PORT = process.env.PORT || 5000;
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/config.js", (req, res) => {
-  const apiUrl = `http://${req.headers.host}`;
+  const protocol = req.protocol;
+  const apiUrl = `${protocol}://${req.headers.host}/`;
   res.set("Content-Type", "application/javascript");
   res.send(`window.APP_CONFIG = { EXPRESS_API_URL: "${apiUrl}" };`);
 });
 
 const corsOptions = {
-  origin: "https://photo-dream.vercel.app",
+  origin:
+    "https://photo-dream.vercel.app/" ||
+    "http://localhost:5000/" ||
+    "https://photo-dream-test.vercel.app/",
   methods: "GET",
 };
 
