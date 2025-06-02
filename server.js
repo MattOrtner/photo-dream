@@ -11,7 +11,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/config.js", (req, res) => {
   const protocol = req.protocol;
+  console.log("protocol: ", protocol);
   const apiUrl = `${protocol}://${req.headers.host}/`;
+  console.log("apiUrl: ", apiUrl);
   res.set("Content-Type", "application/javascript");
   res.send(`window.APP_CONFIG = { EXPRESS_API_URL: "${apiUrl}" };`);
 });
