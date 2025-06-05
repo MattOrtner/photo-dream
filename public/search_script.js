@@ -18,10 +18,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
     console.log("Duplicate search");
     return;
   }
-  fetch(
-    "https://photo-dream.vercel.app/api/data?query=" +
-      encodeURIComponent(searchInput.value)
-  )
+  fetch("/api/data?query=" + encodeURIComponent(searchInput.value))
     .then((res) => {
       return res.json();
     })
