@@ -1,8 +1,3 @@
-const EXPRESS_API_URL = window.APP_CONFIG?.EXPRESS_API_URL;
-if (!EXPRESS_API_URL) {
-  console.error("EXPRESS_API_URL is not defined");
-}
-console.log("EXPRESS_API_URL: ", EXPRESS_API_URL);
 const searchInput = document.getElementById("searchInput");
 const previousSearchContainer = document.getElementById(
   "previousSearchContainer"
@@ -24,7 +19,8 @@ document.getElementById("searchButton").addEventListener("click", () => {
     return;
   }
   fetch(
-    `${EXPRESS_API_URL}api/data?query=` + encodeURIComponent(searchInput.value)
+    "https://photo-dream.vercel.app/api/data?query=" +
+      encodeURIComponent(searchInput.value)
   )
     .then((res) => {
       return res.json();
