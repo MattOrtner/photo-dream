@@ -204,3 +204,29 @@ body {
   text-align: center;
   color: #333;
 }
+
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: 4vh;
+  }
+  #searchInput {
+    width: 100%;
+    max-width: 250px;
+  }
+  #searchContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  #searchButton {
+    width: 100%;
+    max-width: 200px;
+    margin-top: 0.5rem;
+  }
+  .photo-container {
+    width: 100%;
+    max-width: 300px;
+  }
+  .photo {
+    height: 175px;
+  }
+}
