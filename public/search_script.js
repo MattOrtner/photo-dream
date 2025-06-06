@@ -31,7 +31,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
       const previousSearch = document.createElement("a");
       previousSearch.className = "previous-search";
       previousSearch.innerHTML = searchInput.value || "easter egg";
-      previousSearch.href = `#${searchInput.value}`;
+      previousSearch.href = `#${searchInput.value}` || "#easter egg";
       previousSearchContainer.prepend(previousSearch);
 
       const photoGroupsContainer = document.getElementById(
@@ -39,7 +39,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
       );
       const photoGroup = document.createElement("div");
       photoGroup.className = "photo-group";
-      photoGroup.id = `${searchInput.value}`;
+      photoGroup.id = `${searchInput.value}` || "easter egg";
 
       data.results.forEach((photo, i) => {
         const photoContainer = document.createElement("div");
@@ -81,7 +81,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
 
       const photoGroupHeader = document.createElement("h2");
       photoGroupHeader.className = "photo-group-header";
-      photoGroupHeader.innerHTML = searchInput.value || "corgis";
+      photoGroupHeader.innerHTML = searchInput.value || "easter egg";
       photoGroup.prepend(photoGroupHeader);
       searchInput.value = "";
     })
