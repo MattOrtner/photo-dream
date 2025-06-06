@@ -19,7 +19,7 @@ const corsOptions = {
 
 app.get("/api/data", cors(corsOptions), async (req, res) => {
   console.log("Server received request");
-  const searchQuery = req.query.query || "corgis";
+  const searchQuery = req.query.query || "easter egg";
   try {
     const response = await fetchPhotos(searchQuery);
     if (!response || response.length === 0) {

@@ -30,7 +30,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
 
       const previousSearch = document.createElement("a");
       previousSearch.className = "previous-search";
-      previousSearch.innerHTML = searchInput.value || "corgis";
+      previousSearch.innerHTML = searchInput.value || "easter egg";
       previousSearch.href = `#${searchInput.value}`;
       previousSearchContainer.prepend(previousSearch);
 
