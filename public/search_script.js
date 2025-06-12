@@ -31,7 +31,10 @@ document.getElementById("searchButton").addEventListener("click", () => {
       const previousSearch = document.createElement("a");
       previousSearch.className = "previous-search";
       previousSearch.innerHTML = searchInput.value || "easter egg";
-      previousSearch.href = `#${searchInput.value}` || "#easter egg";
+      previousSearch.href = `#${searchInput.value}`;
+      if (searchInput.value === "") {
+        previousSearch.href = "#easter egg";
+      }
       previousSearchContainer.prepend(previousSearch);
 
       const photoGroupsContainer = document.getElementById(
@@ -39,7 +42,10 @@ document.getElementById("searchButton").addEventListener("click", () => {
       );
       const photoGroup = document.createElement("div");
       photoGroup.className = "photo-group";
-      photoGroup.id = `${searchInput.value}` || "easter egg";
+      photoGroup.id = `${searchInput.value}`;
+      if (searchInput.value === "") {
+        photoGroup.id = "easter egg";
+      }
 
       data.results.forEach((photo, i) => {
         const photoContainer = document.createElement("div");
